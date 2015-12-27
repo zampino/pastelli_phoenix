@@ -17,7 +17,6 @@ defmodule PastelliPhoenix.Mixfile do
 
   defp deps do
     [
-      # {:pastelli, "0.2.3", path: "../pastelli" }, #
       {:pastelli, "0.2.3", github: "zampino/pastelli"},
     ]
   end

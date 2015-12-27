@@ -2,9 +2,11 @@
 
 Allows Phoenix Framework to run over the [Elli](//github.com/knutin/elli) server through [Pastelli](//github.com/zampino/pastelli) plug adapter.
 
-:construction: this is work in progress // in order for `Pastelli.Phoenix`
-to work, Phoenix Framework would need [some changes](//github.com/zampino/phoenix/pull/1) to be merged
-first ... :construction:
+Works with Phoenix Framework at version greater or equal than `1.1.0`.
+
+
+See this in Action in the [default phoenix chat example](//github.com/zampino/phoenix-on-pastelli).
+
 
 ## Instructions
 
@@ -15,7 +17,7 @@ Add `:pastelli_phoenix` to your phoenix app dependencies
 ```elixir
 def deps do
   [
-    {:phoenix, "~> 1.0.4"},
+    {:phoenix, "~> 1.1.0"},
     {:pastelli_phoenix, "~> 0.1.0", github: "zampino/pastelli_phoenix" },
     # ...
   ]
@@ -28,18 +30,20 @@ in `config.exs` or `[env].exs`
 
 ```elixir
 config :my_app, MyApp.Endpoint,
+  handler: Pastelli.Phoenix,
   http: [
-    handler: Pastelli.Phoenix,
     port: {:system, "PORT"},
     # ...
   ]
 ```
 
+like in [here](https://github.com/zampino/phoenix-on-pastelli/blob/master/config/config.exs#L11)
+
 ### Plug Pastelli Phoenix in your Endpoint
 
 Using `Pastelli.Phoenix.Endpoint` _before_ `Phoenix.Endpoint` module,
 a new plug module will be defined at compile time
-with the alias `MyApp.Endpoint.SocketDispatch`.
+with the alias `MyApp.Endpoint.SocketDispatchRouter`.
 
 This is to be plugged (anywhere you like but _before_ `MyApp.Router`)
 and will convert phoenix socket cowboy-dispatch rules into Pastelli
@@ -72,5 +76,3 @@ defmodule MyApp.Endpoint do
   plug MyApp.Router
 end
 ```
-
-See this in Action in the [default phoenix chat example](//github.com/zampino/phoenix-over-pastelli).
