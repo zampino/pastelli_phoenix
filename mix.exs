@@ -1,6 +1,6 @@
 defmodule PastelliPhoenix.Mixfile do
   use Mix.Project
-  @version "0.1.1"
+  @version "0.1.2"
 
   def project do
     [app: :pastelli_phoenix,
@@ -17,7 +17,8 @@ defmodule PastelliPhoenix.Mixfile do
 
   defp deps do
     [
-      {:pastelli, "0.2.3", github: "zampino/pastelli"},
+      {:pastelli, "0.2.4", github: "zampino/pastelli"},
+      # {:pastelli, "0.2.4", path: "../pastelli"}
     ]
   end
 end

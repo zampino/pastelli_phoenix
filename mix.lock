@@ -1,0 +1,5 @@
+%{"elli": {:git, "https://github.com/knutin/elli.git", "d3a54c059c415b843e9ab27cb5ab134dc113262f", []},
+  "elli_websocket": {:git, "https://github.com/mmzeeman/elli_websocket.git", "1ce5f3707fb90332f2983656878e58937d5e903d", []},
+  "pastelli": {:git, "https://github.com/zampino/pastelli.git", "5a643e385d2c1ae29b358ddbd2157a5897d92f8c", []},
+  "plug": {:hex, :plug, "1.1.0"},
+  "poison": {:hex, :poison, "1.5.2"}}
