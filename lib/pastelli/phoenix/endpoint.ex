@@ -8,9 +8,7 @@ defmodule Pastelli.Phoenix.Endpoint do
 
   defmacro __before_compile__(env) do
     sockets = Module.get_attribute(env.module, :phoenix_sockets)
-    quote do
-      unquote build_socket_router(env.module, sockets)
-    end
+    build_socket_router(env.module, sockets)
   end
 
   defp build_socket_router(endpoint, sockets) do
@@ -21,7 +19,7 @@ defmodule Pastelli.Phoenix.Endpoint do
            Macro.escape({transport, module, endpoint, socket})}
 
     quote bind_quoted: [dispatch_routes: dispatch_routes] do
-      defmodule SocketDispatchRouter do
+      defmodule Module.concat(Pastelli.Phoenix, SocketDispatchRouter) do
         require Logger
         import Pastelli.Phoenix.Endpoint, only: [route_body_for: 1]
         use Plug.Router
